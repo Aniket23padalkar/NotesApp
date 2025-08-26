@@ -1,0 +1,652 @@
+:root {
+    --bg-body-color: white;
+    --main-bg-color: #a3cef1;
+    --header-bg-color: #3368a5;
+    --text-color: black;
+    --input-border: 2px solid #4aff44af;
+    --border: 1px solid #14213d;
+    --filter-btn-bg-color: #274c77;
+    --modal-bg-color: linear-gradient(to left, #028090, #02c39a);
+    --modal-actions-bg-color: linear-gradient(to left, #02c39a, #028090);
+}
+
+body.dark-mode {
+    --bg-body-color: rgb(51, 51, 51);
+    --main-bg-color: black;
+    --header-bg-color: #0b4383;
+    --text-color: white;
+    --border: 1px solid #29354e;
+    --filter-btn-bg-color: #304294;
+    --modal-bg-color: linear-gradient(to left, #00535e, #016d56);
+    --modal-actions-bg-color: linear-gradient(to left, #016d56, #00535e);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* card color : 02C39A  00A896  028090  05668D */
+/* button color: 274c77 */
+/* border: 14213d*/
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--bg-body-color);
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    height: 80%;
+    width: 73%;
+    position: relative;
+    background-color: var(--main-bg-color);
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
+    display: grid;
+    grid-template-columns: 15rem auto;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+header {
+    grid-row: 1/2;
+    grid-column: 1/3;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--header-bg-color);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    overflow: hidden;
+}
+
+nav {
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-left {
+    width: 8rem;
+    height: 2.5rem;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.filter-menu {
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    cursor: pointer;
+    color: white;
+    display: none;
+}
+
+.filter-menu:active {
+    color: rgb(62, 62, 255);
+}
+
+#menu-close {
+    display: none;
+}
+
+#menu-close:active {
+    color: rgb(62, 62, 255);
+}
+
+.nav-logo {
+    height: 100%;
+    width: 2.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.nav-logo img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.nav-middle {
+    height: 100%;
+    width: 25rem;
+    display: flex;
+    align-items: center;
+    transition: none;
+}
+
+.nav-input {
+    flex: 1 1 auto;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 2px solid transparent;
+}
+
+.nav-input:hover,
+.nav-input:focus-within {
+    border: var(--input-border);
+}
+
+#input-close {
+    font-size: 1.5rem;
+    color: white;
+    display: none;
+}
+
+#search-input {
+    flex: 1 1 auto;
+    height: 100%;
+    padding-left: 1rem;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 2px solid transparent;
+    outline: none;
+    background-color: rgb(54, 54, 54);
+    color: white;
+}
+
+#search-btn {
+    height: 100%;
+    width: 2.5rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.nav-right {
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+    height: 2.5rem;
+}
+
+#dark-light-toggle {
+    height: 100%;
+    width: 3rem;
+    font-size: 1.3rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#dark-light-toggle:hover {
+    background-color: rgb(187, 187, 187);
+}
+
+#add-btn {
+    height: 100%;
+    width: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    background-color: rgb(0, 175, 0);
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+#add-btn:hover {
+    background-color: rgb(0, 156, 0);
+}
+
+aside {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    border: var(--border);
+    border-bottom-left-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+aside h2 {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.7);
+    text-decoration: underline;
+}
+
+.filter-btn {
+    height: 2rem;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: var(--filter-btn-bg-color);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-btn:focus {
+    border: var(--border);
+    scale: 1.05;
+    outline: black;
+}
+
+.main-container {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    border: var(--border);
+    border-bottom-right-radius: 15px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-auto-rows: 13rem;
+    place-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.note-card {
+    height: 12rem;
+    width: 13rem;
+    background-color: #02c39a;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.note-header {
+    width: 100%;
+    padding-bottom: 0.5rem;
+    overflow: hidden;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.note-text-container {
+    flex: 1;
+    min-width: 7rem;
+}
+
+.note-para {
+    flex: 1;
+    font-size: 0.9rem;
+    overflow: hidden;
+    word-wrap: break-word;
+    cursor: pointer;
+}
+
+.note-actions {
+    height: 2rem;
+    border: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem 0 1rem;
+    border-left: none;
+    border-right: none;
+}
+
+.note-date {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    color: blue;
+}
+
+.edit-btn,
+.trash-btn {
+    height: 1.5rem;
+    width: 2.5rem;
+    border: none;
+    background: var(--filter-btn-bg-color);
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.edit-btn:hover,
+.trash-btn:hover {
+    background-color: #426a97;
+}
+
+.note-header h3 {
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.modal {
+    position: fixed;
+    z-index: 10;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    height: 25rem;
+    width: 25rem;
+    background: var(--modal-bg-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.modal-content h2 {
+    text-align: center;
+    padding-bottom: 1rem;
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+#input-title,
+#edit-title {
+    height: 2.5rem;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    outline: none;
+    border: 1px solid transparent;
+    background-color: var(--bg-body-color);
+    color: var(--text-color);
+}
+
+#input-body,
+#edit-body {
+    flex: 1;
+    padding: 0.8rem;
+    outline: none;
+    border: 1px solid transparent;
+    background-color: var(--bg-body-color);
+    color: var(--text-color);
+}
+
+#input-title:focus,
+#input-body:focus,
+#edit-title:focus,
+#edit-body:focus {
+    border: var(--border);
+}
+
+.add-modal-actions,
+.close-modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 3.5rem;
+    background: var(--modal-actions-bg-color);
+    width: 25rem;
+    margin-top: 0.5rem;
+}
+
+#save-btn,
+#close-add-modal,
+#close-view-modal,
+#edit-save-btn,
+#close-edit-modal {
+    height: 2rem;
+    width: 4rem;
+    background-color: var(--filter-btn-bg-color);
+    border: 2px solid transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#save-btn:hover,
+#close-add-modal:hover,
+#close-view-modal:hover,
+#edit-save-btn:hover,
+#close-edit-modal:hover {
+    background-color: #3368a5;
+}
+
+.hidden {
+    display: none;
+}
+
+#view-title {
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+#view-body {
+    flex: 1;
+    padding: 1rem;
+    background-color: var(--bg-body-color);
+}
+
+#view-date {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: blue;
+}
+
+@media (max-width: 1200px) {
+    .main-container {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .nav-right {
+        padding-left: 2rem;
+    }
+    main {
+        height: 60%;
+        width: 90%;
+    }
+    .main-container {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        width: 92%;
+    }
+    .nav-right {
+        padding: 0 0.5rem 0 2.5rem;
+    }
+    #dark-light-toggle {
+        height: 2.3rem;
+        font-size: 1.1rem;
+    }
+    aside h2 {
+        color: white;
+        padding: 0 0.5rem 1rem 0.5rem;
+    }
+    aside {
+        position: absolute;
+        grid-row: 1/3;
+        z-index: 10;
+        width: 25rem;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 0;
+        display: none;
+        padding-top: 3rem;
+    }
+    .main-container {
+        grid-column: 1/3;
+        grid-template-columns: auto auto;
+        row-gap: 2rem;
+        border: none;
+    }
+    .filter-menu {
+        display: block;
+    }
+    #menu-close {
+        display: block;
+        font-size: 2rem;
+    }
+    .note-card {
+        width: 18rem;
+        padding: 1rem;
+    }
+    .note-actions {
+        padding: 0 2rem 0 2rem;
+    }
+    .filter-btn {
+        height: 2.5rem;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .note-card {
+        width: 15rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+    }
+    header {
+        border-radius: 0;
+    }
+    .nav-left {
+        padding-left: 0;
+    }
+    .nav-input {
+        padding-left: 0.5rem;
+    }
+    .nav-right {
+        padding: 0;
+        padding-left: 0.8rem;
+    }
+    #search-input {
+        width: 10rem;
+    }
+    aside {
+        width: 20rem;
+    }
+    .main-container {
+        grid-template-columns: auto;
+        grid-auto-rows: 5rem;
+        row-gap: 1rem;
+        align-items: center;
+        padding: 1rem;
+        border: none;
+    }
+    .note-card {
+        width: 100%;
+        height: 5rem;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: hidden;
+    }
+    .note-text-container {
+        overflow: hidden;
+    }
+    .note-actions {
+        padding: 0;
+    }
+    .note-date {
+        white-space: normal;
+    }
+    .trash-btn {
+        margin-left: 0.5rem;
+    }
+    .modal-content,
+    .add-modal-actions,
+    .close-modal-actions {
+        width: 90%;
+    }
+}
+
+@media (max-width: 430px) {
+    main {
+        padding: 0;
+    }
+    header {
+        border-radius: 0;
+        position: relative;
+    }
+    #search-input {
+        display: none;
+        margin: 0 0.5rem;
+    }
+    #search-input.active {
+        display: block;
+    }
+    .nav-middle {
+        width: 11rem;
+    }
+    .nav-middle.active {
+        z-index: 10;
+        width: 100%;
+        left: 0;
+        position: absolute;
+        background-color: black;
+        transition: all 0.3s ease;
+    }
+    .nav-input {
+        justify-content: end;
+    }
+    #search-input:focus {
+        border: var(--input-border);
+    }
+    .nav-input:focus-within,
+    .nav-input:hover {
+        border: 2px solid transparent;
+    }
+    .main-container {
+        border: none;
+        padding: 1rem;
+    }
+    #search-btn {
+        height: 2.5rem;
+        border-radius: 50%;
+        background-color: rgb(180, 180, 180);
+        border: var(--border);
+    }
+    #dark-light-toggle {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        background-color: rgb(180, 180, 180);
+        border: var(--border);
+    }
+    .modal-content {
+        height: 50%;
+    }
+}

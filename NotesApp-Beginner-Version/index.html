@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <title>NoteApp-Beginner-Version</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <main>
+                <header>
+                    <nav>
+                        <div class="nav-left">
+                            <div class="filter-menu">
+                                <i class="fa-solid fa-bars"></i>
+                            </div>
+                            <div class="nav-logo">
+                                <img src="Note-logo.jpg" alt="Logo" />
+                            </div>
+                        </div>
+                        <div class="nav-middle">
+                            <div class="nav-input">
+                                <div id="input-close">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </div>
+                                <input
+                                    type="text"
+                                    id="search-input"
+                                    placeholder="Search note"
+                                />
+                                <button id="search-btn">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="nav-right">
+                            <button id="dark-light-toggle">
+                                <i class="fa-solid fa-moon"></i>
+                            </button>
+                            <button id="add-btn">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </nav>
+                </header>
+
+                <aside id="aside">
+                    <h2>
+                        Filter's
+                        <span id="menu-close"
+                            ><i class="fa-solid fa-xmark"></i
+                        ></span>
+                    </h2>
+                    <button class="filter-btn active" data-filter="All">
+                        All notes <span id="note-count-all">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="Pinned">
+                        Pinned <span id="note-count-pinned">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="Work">
+                        Work <span id="note-count-work">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="Personal">
+                        Personal <span id="note-count-personal">0</span>
+                    </button>
+                </aside>
+
+                <div class="main-container"></div>
+
+                <div class="modal add-modal hidden">
+                    <div class="modal-content">
+                        <h2>Add note</h2>
+                        <input
+                            type="text"
+                            id="input-title"
+                            placeholder="Title"
+                        />
+                        <textarea
+                            id="input-body"
+                            placeholder="Type details...."
+                        ></textarea>
+                        <label for="category">category</label>
+                        <select id="category">
+                            <option value="Pinned">Pinned</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                        </select>
+                    </div>
+                    <div class="add-modal-actions">
+                        <button id="save-btn">Save</button>
+                        <button id="close-add-modal">Cancel</button>
+                    </div>
+                </div>
+
+                <div class="modal edit-modal hidden">
+                    <div class="modal-content">
+                        <h2>Edit note</h2>
+                        <input
+                            type="text"
+                            id="edit-title"
+                            placeholder="Title"
+                        />
+                        <textarea
+                            id="edit-body"
+                            placeholder="Type details...."
+                        ></textarea>
+                        <label for="edit-category">category</label>
+                        <select id="edit-category">
+                            <option value="Pinned">Pinned</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                        </select>
+                    </div>
+                    <div class="add-modal-actions">
+                        <button id="edit-save-btn">Update</button>
+                        <button id="close-edit-modal">Cancel</button>
+                    </div>
+                </div>
+
+                <div class="modal view-modal hidden">
+                    <div class="modal-content">
+                        <h2 id="view-title"></h2>
+                        <p id="view-body"></p>
+                        <p id="view-date"></p>
+                    </div>
+                    <div class="close-modal-actions">
+                        <button id="close-view-modal">Close</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
