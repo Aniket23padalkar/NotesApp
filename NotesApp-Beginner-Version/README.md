@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-[NotesApp Beginner Version]()
+[NotesApp Beginner Version](https://aniket23padalkar.github.io/NotesApp/NotesApp-Beginner-Version/)
 
 ---
 
